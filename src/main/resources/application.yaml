@@ -1,0 +1,17 @@
+spring:    
+    application: 
+        name: 
+            coffe_shop
+
+    security:
+        oauth2:
+            client:
+                registration:
+                    google: 
+                        client-id: CLIENT ID 
+                        client-secret: CLIENT SECRET 
+                        scope:
+                            - openid 
+                            - profile 
+                            - email  
+          
