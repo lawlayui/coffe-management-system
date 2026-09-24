@@ -1,8 +1,10 @@
 package com.lawlayui.coffe_shop.account.domain.account_root;
 
+
 import com.lawlayui.coffe_shop.account.domain.account_root.value_object.AccountId;
 import com.lawlayui.coffe_shop.account.domain.account_root.value_object.Email;
 import com.lawlayui.coffe_shop.account.domain.account_root.value_object.Name;
+import com.lawlayui.coffe_shop.account.domain.account_root.value_object.Reason;
 import com.lawlayui.coffe_shop.account.domain.account_root.value_object.Role;
 import com.lawlayui.coffe_shop.account.domain.account_root.value_object.Status;
 
@@ -12,6 +14,7 @@ public class Account {
     private Email email;
     private Role role; 
     private Status status;
+    private Reason reason;
 
     private Account(AccountId accountId,
         Name name, 
@@ -42,8 +45,9 @@ public class Account {
 
     }
 
-    public void suspendAccount() {
+    public void suspendAccount(Reason reason) {
         this.status = Status.SUSPENDED;
+        this.reason = reason;
     }
 
     public void verifyAccount() {
@@ -68,5 +72,8 @@ public class Account {
     }
     public Status getStatus() {
         return status;
+    }
+    public Reason getReason() {
+        return reason;
     }
 }
