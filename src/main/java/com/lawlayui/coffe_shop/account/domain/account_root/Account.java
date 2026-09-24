@@ -54,8 +54,8 @@ public class Account {
         this.status = Status.ACTIVE;
     }
 
-    public void assignRole(Role newRole) {
-        this.role = newRole;
+    public void assignRole() {
+        this.role = this.role == Role.CUSTOMER ? Role.ADMIN : Role.CUSTOMER;
     }
 
     public AccountId getAccountId() {
