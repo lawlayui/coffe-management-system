@@ -1,4 +1,4 @@
-package com.lawlayui.coffe_shop.infrastructure.framework;
+package com.lawlayui.coffe_shop.infrastructure.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -6,9 +6,16 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.lawlayui.coffe_shop.infrastructure.services.CustomOidcUserService;
+
 @Configuration 
 @EnableWebSecurity 
 public class SecurityConfig {
+    private CustomOidcUserService customOidcUserService;
+
+    public SecurityConfig(CustomOidcUserService customOidcUserService) {
+        this.customOidcUserService = customOidcUserService;
+    }
 
     @Bean 
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -20,7 +27,9 @@ public class SecurityConfig {
             )
 
             .oauth2Login(oauth2 -> oauth2 
-                .defaultSuccessUrl("/", true)
+                .userInfoEndpoint(userinfo -> 
+                    userinfo.oidcUserService(customOidcUserService)
+                )
             );
 
         return http.build();

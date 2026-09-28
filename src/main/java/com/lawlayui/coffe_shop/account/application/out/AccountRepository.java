@@ -9,5 +9,6 @@ public interface AccountRepository {
     void save(Account account);    
     void update(Account account);
     Optional<Account> getById(String id);
-    List<Account> getAll(String page, String pageSize, String q);
+    List<Account> getAll(int page, int pageSize);
+    Optional<Account> getByGoogleSub(String googleSub);
 }

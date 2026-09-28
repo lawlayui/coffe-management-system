@@ -14,6 +14,6 @@ public class AccountGetAllUseCase {
     }
 
     public List<Account> getAll(AccountGetAllQuery query) {
-        return accountRepository.getAll(query.page(), query.pageSize(), query.q());
+        return accountRepository.getAll(query.page(), query.pageSize());
     }
 }

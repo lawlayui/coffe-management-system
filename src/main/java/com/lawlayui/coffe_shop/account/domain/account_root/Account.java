@@ -15,32 +15,42 @@ public class Account {
     private Role role; 
     private Status status;
     private Reason reason;
+    private String googleSub;
 
     private Account(AccountId accountId,
         Name name, 
         Email email, 
         Role role, 
-        Status status
+        Status status,
+        Reason reason,
+        String googleSub
     ) {
         this.accountId = accountId; 
         this.name = name; 
         this.email = email; 
         this.role = role; 
         this.status = status;
+        this.reason = reason;
+        this.googleSub = googleSub;
     }
 
     public static Account create(String accountId, 
         String name, 
         String email, 
-        Role role 
+        Role role,
+        Status status,
+        String reason,
+        String googleSub
         ) {
 
         return new Account(
             new AccountId(accountId), 
             new Name(name), 
             new Email(email), 
-            Role.CUSTOMER, 
-            Status.UNVERIFIED
+            role, 
+            status,
+            new Reason(reason),
+            googleSub
         );
 
     }
@@ -75,5 +85,8 @@ public class Account {
     }
     public Reason getReason() {
         return reason;
+    }
+    public String getGoogleSub() {
+        return this.googleSub;
     }
 }

@@ -9,9 +9,19 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity 
 @Table(name="account")
+@Getter 
+@Setter 
+@NoArgsConstructor 
+@AllArgsConstructor 
+@Builder 
 public class AccountJpaEntity {
     @Id 
     private String id; 
@@ -38,4 +48,7 @@ public class AccountJpaEntity {
     @Column(name = "updated_at")
     @UpdateTimestamp 
     private LocalDateTime updatedAt;
+
+    @Column(name = "google_sub")
+    private String googleSub;
 }
