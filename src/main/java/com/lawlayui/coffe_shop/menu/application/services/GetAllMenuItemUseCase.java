@@ -14,6 +14,6 @@ public class GetAllMenuItemUseCase {
     }
 
     public List<MenuItem> getAll(GetAllMenuItemQuery query) {
-        return menuItemRepository.getAll(query.page(), query.pageSize(), query.q());
+        return menuItemRepository.getAll(query.page(), query.pageSize());
     }
 }

@@ -1,5 +1,5 @@
 package com.lawlayui.coffe_shop.account.application.in;
 
-public record ErrorDto(int code, String message) {
+public record ErrorDto(String code, String message) {
     
 }
