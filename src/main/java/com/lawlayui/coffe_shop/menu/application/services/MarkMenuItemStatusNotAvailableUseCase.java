@@ -1,6 +1,6 @@
 package com.lawlayui.coffe_shop.menu.application.services;
 
-import com.lawlayui.coffe_shop.menu.application.exception.MenuItemNotFound;
+import com.lawlayui.coffe_shop.menu.application.exception.MenuItemNotFoundException;
 import com.lawlayui.coffe_shop.menu.application.out.MenuItemRepository;
 import com.lawlayui.coffe_shop.menu.domain.MenuItem;
 
@@ -14,7 +14,7 @@ public class MarkMenuItemStatusNotAvailableUseCase {
 
     public void mark(String id) {
         MenuItem menuItem = menuItemRepository.getById(id)
-            .orElseThrow(() -> new MenuItemNotFound(id));
+            .orElseThrow(() -> new MenuItemNotFoundException(id));
 
         menuItem.markAsOutOfStock();
         menuItemRepository.update(menuItem);

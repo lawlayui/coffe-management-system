@@ -9,5 +9,8 @@ public record Price(BigDecimal value) {
         if (value.compareTo(BigDecimal.ZERO) == 0) {
             throw new IllegalArgumentException("Price cannot be zero");
         }
+        if (value.compareTo(BigDecimal.ZERO) == -1) {
+            throw new IllegalArgumentException("Price cannot be negative");
+        }
     }
 }

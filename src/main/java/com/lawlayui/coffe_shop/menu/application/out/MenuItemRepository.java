@@ -10,5 +10,6 @@ public interface MenuItemRepository {
     void update(MenuItem menuItem);
     Optional<MenuItem> getById(String id);
     List<MenuItem> getAll(int page, int pageSize);
+    Optional<MenuItem> getByIdAndBranchId(String id, String branchId);
 }
 

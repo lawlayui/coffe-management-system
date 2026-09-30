@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.lawlayui.coffe_shop.menu.application.out.MenuItemRepository;
-import com.lawlayui.coffe_shop.menu.application.services.ChangeMenuItemStatusUseCase;
+import com.lawlayui.coffe_shop.menu.application.services.ChangeMenuItemPriceUseCase;
 import com.lawlayui.coffe_shop.menu.application.services.GetAllMenuItemUseCase;
 import com.lawlayui.coffe_shop.menu.application.services.GetMenuItemByIdUseCase;
 import com.lawlayui.coffe_shop.menu.application.services.MarkMenuItemStatusAvailableUseCase;
@@ -23,8 +23,8 @@ public class MenuBeanConfiguration {
     }
 
     @Bean 
-    public ChangeMenuItemStatusUseCase changeMenuItemStatusUseCase(MenuItemRepository menuItemRepository) {
-        return new ChangeMenuItemStatusUseCase(menuItemRepository);
+    public ChangeMenuItemPriceUseCase changeMenuItemStatusUseCase(MenuItemRepository menuItemRepository) {
+        return new ChangeMenuItemPriceUseCase(menuItemRepository);
     }
 
     @Bean 

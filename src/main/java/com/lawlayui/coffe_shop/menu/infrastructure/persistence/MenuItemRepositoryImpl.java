@@ -18,6 +18,11 @@ public class MenuItemRepositoryImpl implements  MenuItemRepository{
         this.menuItemRepositoryJpa = menuItemRepositoryJpa;
     }
 
+    @Override 
+    public Optional<MenuItem> getByIdAndBranchId(String id, String branchId) {
+        return menuItemRepositoryJpa.findByIdAndBranchId(id, branchId).map(MenuItemPersistenceMapper::toDomain);
+    }
+
     @Override
     public List<MenuItem> getAll(int page, int pageSize) {
         return MenuItemPersistenceMapper.toDomains(menuItemRepositoryJpa.findAll(PageRequest.of(page, pageSize)).getContent());
