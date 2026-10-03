@@ -33,4 +33,7 @@ public class MenuItemEntityJpa {
     private String menuStatus;
 
     private BigDecimal price;
+
+    @Column(name = "univ_id")
+    private String univId;
 }

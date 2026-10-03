@@ -14,23 +14,26 @@ public class MenuItem {
     private RecipeId recipeId; 
     private MenuStatus menuStatus; 
     private Price price; 
+    private String univId;
     
     
-    private MenuItem(MenuItemId menuItemId, BranchId branchId, RecipeId recipeId, MenuStatus menuStatus, Price price) {
+    private MenuItem(MenuItemId menuItemId, BranchId branchId, RecipeId recipeId, MenuStatus menuStatus, Price price, String univId) {
         this.menuItemId = menuItemId;
         this.branchId = branchId;
         this.recipeId = recipeId;
         this.menuStatus = menuStatus;
         this.price = price;
+        this.univId = univId;
     }
 
-    public static MenuItem create(String id, String branchId, String recipeId, MenuStatus status, BigDecimal price) {
+    public static MenuItem create(String id, String branchId, String recipeId, MenuStatus status, BigDecimal price, String univId) {
         return new MenuItem(
             new MenuItemId(id), 
             new BranchId(branchId), 
             new RecipeId(recipeId),
             status, 
-            new Price(price)
+            new Price(price),
+            univId
         );
     }
     
@@ -60,5 +63,8 @@ public class MenuItem {
     }
     public Price getPrice() {
         return price;
+    }
+    public String getUnivId() {
+        return univId;
     }
 }

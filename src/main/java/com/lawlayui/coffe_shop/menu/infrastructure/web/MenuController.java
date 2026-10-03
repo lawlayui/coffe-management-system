@@ -6,14 +6,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lawlayui.coffe_shop.menu.application.in.ChangeMenuItemPriceCommand;
+import com.lawlayui.coffe_shop.menu.application.in.CreateMenuItemCommand;
 import com.lawlayui.coffe_shop.menu.application.in.GetAllMenuItemQuery;
 import com.lawlayui.coffe_shop.menu.application.services.ChangeMenuItemPriceUseCase;
+import com.lawlayui.coffe_shop.menu.application.services.CreateMenuItemUseCase;
 import com.lawlayui.coffe_shop.menu.application.services.GetAllMenuItemUseCase;
 import com.lawlayui.coffe_shop.menu.application.services.GetMenuItemByIdUseCase;
 import com.lawlayui.coffe_shop.menu.domain.MenuItem;
@@ -24,6 +27,7 @@ public class MenuController {
     private GetAllMenuItemUseCase getAllMenuItemUseCase;
     private GetMenuItemByIdUseCase getMenuItemByIdUseCase;
     private ChangeMenuItemPriceUseCase changeMenuItemPriceUseCase;
+    private CreateMenuItemUseCase createMenuItemUseCase;
 
     @GetMapping("/{id}")
     public ResponseEntity<MenuItem> getById(@PathVariable String id) {
@@ -38,6 +42,12 @@ public class MenuController {
     @PatchMapping("/{id}")
     public ResponseEntity<?> changeMenuItemPrice(@PathVariable String id, @RequestBody ChangeMenuItemPriceCommand command) {
         changeMenuItemPriceUseCase.changePrice(new ChangeMenuItemPriceCommand(id, command.price()));
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody CreateMenuItemCommand command){
+        createMenuItemUseCase.create(command);
         return ResponseEntity.noContent().build();
     }
 }

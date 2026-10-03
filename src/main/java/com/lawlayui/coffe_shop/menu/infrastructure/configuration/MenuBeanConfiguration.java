@@ -3,8 +3,10 @@ package com.lawlayui.coffe_shop.menu.infrastructure.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.lawlayui.coffe_shop.menu.application.out.EventPublisher;
 import com.lawlayui.coffe_shop.menu.application.out.MenuItemRepository;
 import com.lawlayui.coffe_shop.menu.application.services.ChangeMenuItemPriceUseCase;
+import com.lawlayui.coffe_shop.menu.application.services.CreateMenuItemUseCase;
 import com.lawlayui.coffe_shop.menu.application.services.GetAllMenuItemUseCase;
 import com.lawlayui.coffe_shop.menu.application.services.GetMenuItemByIdUseCase;
 import com.lawlayui.coffe_shop.menu.application.services.MarkMenuItemStatusAvailableUseCase;
@@ -35,5 +37,10 @@ public class MenuBeanConfiguration {
     @Bean 
     public MarkMenuItemStatusNotAvailableUseCase markMenuItemStatusNotAvailableUseCase(MenuItemRepository menuItemRepository) {
         return new MarkMenuItemStatusNotAvailableUseCase(menuItemRepository);
+    }
+
+    @Bean
+    public CreateMenuItemUseCase createMenuItemUseCase(MenuItemRepository menuItemRepository, EventPublisher eventPublisher) {
+        return new CreateMenuItemUseCase(menuItemRepository, eventPublisher);
     }
 }

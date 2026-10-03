@@ -12,7 +12,8 @@ public class MenuItemPersistenceMapper {
             entityJpa.getBranchId(), 
             entityJpa.getRecipe_id(), 
             entityJpa.getMenuStatus() == "AVAILABLE" ? MenuStatus.AVAILABLE : MenuStatus.NOT_AVAILABLE, 
-            entityJpa.getPrice()
+            entityJpa.getPrice(),
+            entityJpa.getUnivId()
         );
 
         return menuItem;
@@ -25,6 +26,7 @@ public class MenuItemPersistenceMapper {
             .recipe_id(domain.getRecipeId().value())
             .menuStatus(domain.getMenuStatus().name())
             .price(domain.getPrice().value())
+            .univId(domain.getUnivId())
             .build();
 
         return menuItemEntityJpa;
